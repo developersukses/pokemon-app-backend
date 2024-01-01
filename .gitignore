@@ -1,0 +1,5 @@
+node_modules
+request.res
+package-log.json
+docker-compose.yaml
+Dockerfile
