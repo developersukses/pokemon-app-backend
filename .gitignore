@@ -3,3 +3,4 @@ request.rest
 package-log.json
 docker-compose.yaml
 Dockerfile
+.env
