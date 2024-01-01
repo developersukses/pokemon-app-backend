@@ -1,5 +1,5 @@
 node_modules
-request.res
+request.rest
 package-log.json
 docker-compose.yaml
 Dockerfile
