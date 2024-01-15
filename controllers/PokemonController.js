@@ -8,7 +8,7 @@ export const createPokemon = async (req, res) => {
     try {
 
         //after probalitiy 50% 
-        const pokemon = await prisma.pokemon.create({
+        const pokemon = await prisma.pokemonapp_lovelaidgo.create({
             data: {
                 pokemon_id: pokemon_id,
                 nickname: nickname,
@@ -24,11 +24,11 @@ export const createPokemon = async (req, res) => {
 export const getPokemon = async (req, res) => {
     try {
 
-        const pokemonCount = await prisma.pokemon.count()
+        const pokemonCount = await prisma.pokemonapp_lovelaidgo.count()
 
         if (req.query.limit) return getPokemonPage(req, res, pokemonCount)
 
-        const response = await prisma.pokemon.findMany({
+        const response = await prisma.pokemonapp_lovelaidgo.findMany({
             take: 20,
             orderBy: {
                 id: 'asc'
@@ -62,7 +62,7 @@ export const releasePokemon = async (req, res) => {
             prima = true 
         }
 
-        const release = prima && (await prisma.pokemon.delete({
+        const release = prima && (await prisma.pokemonapp_lovelaidgo.delete({
                 where: {
                     id: id 
                 }
@@ -80,7 +80,7 @@ export const releasePokemon = async (req, res) => {
 
 export const getPokemonByName = async (req,res) => {
     try {
-        const response  = await prisma.pokemon.findUnique({
+        const response  = await prisma.pokemonapp_lovelaidgo.findUnique({
             where: {
                 nickname : req.params.nickname
             }
@@ -97,7 +97,7 @@ export const updateNickname = async (req, res) => {
 
         const id = parseInt(req.params.id)
 
-        const data = await prisma.pokemon.findUnique({
+        const data = await prisma.pokemonapp_lovelaidgo.findUnique({
             where: {
                 id: id
             }
@@ -126,7 +126,7 @@ export const updateNickname = async (req, res) => {
             fibAngka = fibonacci(fibAngka)
         }
 
-        const response = await prisma.pokemon.update({
+        const response = await prisma.pokemonapp_lovelaidgo.update({
             where: {
                 id: id
             },
@@ -150,7 +150,7 @@ const getPokemonPage = async (req, res, count) => {
         const offset = parseInt(req.query.offset)
         const limit = parseInt(req.query.limit)
 
-        const response = await prisma.pokemon.findMany({
+        const response = await prisma.pokemonapp_lovelaidgo.findMany({
             skip: offset,
             take: limit,
             orderBy: {
